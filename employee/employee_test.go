@@ -23,6 +23,10 @@ var _ = Describe("Employee", func() {
 			// Salary is 1000
 			// Bonus is 20% of the salary
 			// Bonus is 200
+			empl, err := employee.GetEmployeeFactory("manager")
+			Expect(err).NotTo(HaveOccurred())
+			Expect(empl.GetBonus()).To(Equal(1000))
+			Expect(float64(empl.GetSalary()) - empl.GetBonus())
 		})
 
 	})
@@ -42,6 +46,10 @@ var _ = Describe("Employee", func() {
 			// Salary is 500
 			// Bonus is 10% of the salary
 			// Bonus is 50
+			empl, err := employee.GetEmployeeFactory("staff")
+			Expect(err).NotTo(HaveOccurred())
+			Expect(empl.GetBonus()).To(Equal(500))
+			Expect(float64(empl.GetSalary()) - empl.GetBonus())
 		})
 
 	})
